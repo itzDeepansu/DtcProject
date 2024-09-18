@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
         <div className="flex min-h-screen w-full flex-col bg-muted/40 bg-black text-white">
           <NavBar />
           <SideBar />
-          <div className="ml-16 w-[calc(100%-4rem)]">{children}</div>
+          <div className="ml-16 w-[calc(100%-4rem)] bg-gray-600 p-2">{children}</div>
         </div>
       </body>
     </html>

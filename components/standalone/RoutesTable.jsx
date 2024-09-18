@@ -207,7 +207,7 @@ const busData = [
   },
 ];
 
-export default function RoutesTable() {
+export default function RoutesTable({elements}) {
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
 
@@ -244,11 +244,10 @@ export default function RoutesTable() {
         return "text-gray-500";
     }
   };
-
   return (
-    <div className="container p-2 bg-gray-600 min-h-screen">
-      <Card className="mb-6 p-4 text-white bg-[#1c1c22] border-[#4c4c4c] ">
-        <CardHeader>
+    <div className={`container p-2 bg-gray-600 max-h-full overflow-y-scroll`}>
+      <Card className="p-4 text-white bg-[#0b0b0b] border-[#4c4c4c] rounded-lg relative">
+        <CardHeader >
           <CardTitle className="text-2xl font-bold flex items-center">
             <Bus className="mr-2" /> Bus Information Dashboard
           </CardTitle>
