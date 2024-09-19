@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { TrendingUp } from "lucide-react"
 import { Label, Pie, PieChart as RechartsPieChart } from "recharts"
 
 import {
@@ -19,49 +18,39 @@ import {
 } from "@/components/ui/chart"
 
 const chartData = [
-  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "firefox", visitors: 287, fill: "var(--color-firefox)" },
-  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "other", visitors: 190, fill: "var(--color-other)" },
+  { browser: "Running", buses: 4275, fill: "var(--color-chrome)" },
+  { browser: "For Repair", buses: 400, fill: "var(--color-safari)" },
+  { browser: "Non Servicable", buses: 1287, fill: "var(--color-firefox)" },
 ]
 
 const chartConfig = {
-  visitors: {
-    label: "Visitors",
+  buses: {
+    label: "Buses",
   },
   chrome: {
-    label: "Chrome",
+    label: "Running",
     color: "hsl(var(--chart-1))",
   },
   safari: {
-    label: "Safari",
+    label: "For Repair",
     color: "hsl(var(--chart-2))",
   },
   firefox: {
-    label: "Firefox",
+    label: "Non Servicable",
     color: "hsl(var(--chart-3))",
-  },
-  edge: {
-    label: "Edge",
-    color: "hsl(var(--chart-4))",
-  },
-  other: {
-    label: "Other",
-    color: "hsl(var(--chart-5))",
   },
 }
 
-export function PieChart() {
-  const totalVisitors = React.useMemo(() => {
-    return chartData.reduce((acc, curr) => acc + curr.visitors, 0)
+export function BusPieChart() {
+  const totalbuses = React.useMemo(() => {
+    return chartData.reduce((acc, curr) => acc + curr.buses, 0)
   }, [])
 
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col bg-black text-white border-[#4c4c4c]">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Pie Chart - Donut with Text</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>Buses</CardTitle>
+        <CardDescription>19/09/2024</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
@@ -75,7 +64,7 @@ export function PieChart() {
             />
             <Pie
               data={chartData}
-              dataKey="visitors"
+              dataKey="buses"
               nameKey="browser"
               innerRadius={60}
               strokeWidth={5}
@@ -95,14 +84,14 @@ export function PieChart() {
                           y={viewBox.cy}
                           className="fill-foreground text-3xl font-bold"
                         >
-                          {totalVisitors.toLocaleString()}
+                          {totalbuses.toLocaleString()}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 24}
                           className="fill-muted-foreground"
                         >
-                          Visitors
+                          Buses
                         </tspan>
                       </text>
                     )
@@ -115,10 +104,7 @@ export function PieChart() {
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
         <div className="flex items-center gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
+        Showing Buses' Status for 19/09/2024
         </div>
       </CardFooter>
     </Card>

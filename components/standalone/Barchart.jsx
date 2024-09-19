@@ -114,8 +114,8 @@ const chartData = [
   ]
 
 const chartConfig = {
-  views: {
-    label: "Page Views",
+  emmision: {
+    label: "Carbon Emmission",
   },
   Petrol: {
     label: "Petrol",
@@ -139,7 +139,7 @@ export function Barchart() {
   );
 
   return (
-    <Card>
+    <Card className="bg-black text-white border-[#4c4c4c] *:border-[#4c4c4c]">
       <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
         <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
           <CardTitle>Carbon Footprint</CardTitle>
@@ -152,7 +152,7 @@ export function Barchart() {
             <button
               key={key}
               data-active={activeChart === key}
-              className="relative z-30 flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l data-[active=true]:bg-muted/50 sm:border-l sm:border-t-0 sm:px-8 sm:py-6"
+              className="relative z-30 flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l data-[active=true]:bg-muted/15 sm:border-l sm:border-t-0 sm:px-8 sm:py-6 border-[#4c4c4c] "
               onClick={() => setActiveChart(key)}
             >
               <span className="text-xs text-muted-foreground">
@@ -194,7 +194,7 @@ export function Barchart() {
               content={
                 <ChartTooltipContent
                   className="w-[150px]"
-                  nameKey="views"
+                  nameKey="emmision"
                   labelFormatter={(value) => {
                     return new Date(value).toLocaleDateString("en-US", {
                       month: "short",
