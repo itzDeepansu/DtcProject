@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Bus, Navigation, AlertTriangle, Square } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { nanoid } from "nanoid";
@@ -14,202 +14,211 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const getRandomFrequency = () => Math.floor(Math.random() * (20 - 8 + 1) + 8);
+// Move dynamic generation into the client-side only using useEffect
+const generateInitialBusData = () => {
+  const getRandomFrequency = () => Math.floor(Math.random() * (20 - 8 + 1) + 8);
 
-const generateBusId = () => {
-  const randomNumber = Math.floor(Math.random() * 100);
-  if (Math.random() < 0.3) {
-    // 30% chance of numeric ID
-    return randomNumber.toString().padStart(2, "0");
-  } else {
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    return `${randomNumber.toString().padStart(3, "0")}${
-      alphabet[Math.floor(Math.random() * alphabet.length)]
-    }`;
-  }
+  const generateBusId = () => {
+    const randomNumber = Math.floor(Math.random() * 100);
+    if (Math.random() < 0.3) {
+      return randomNumber.toString().padStart(2, "0");
+    } else {
+      const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      return `${randomNumber.toString().padStart(3, "0")}${
+        alphabet[Math.floor(Math.random() * alphabet.length)]
+      }`;
+    }
+  };
+
+  return [
+    {
+      id: generateBusId(),
+      route: 43,
+      status: "delayed",
+      frequency: getRandomFrequency(),
+      direction: "N",
+    },
+    {
+      id: generateBusId(),
+      route: 22,
+      status: "running",
+      frequency: getRandomFrequency(),
+      direction: "W",
+    },
+    {
+      id: generateBusId(),
+      route: 13,
+      status: "delayed",
+      frequency: getRandomFrequency(),
+      direction: "N",
+    },
+    {
+      id: generateBusId(),
+      route: 3,
+      status: "running",
+      frequency: getRandomFrequency(),
+      direction: "N",
+    },
+    {
+      id: generateBusId(),
+      route: 3,
+      status: "delayed",
+      frequency: getRandomFrequency(),
+      direction: "N",
+    },
+    {
+      id: generateBusId(),
+      route: 39,
+      status: "delayed",
+      frequency: getRandomFrequency(),
+      direction: "S",
+    },
+    {
+      id: generateBusId(),
+      route: 10,
+      status: "delayed",
+      frequency: getRandomFrequency(),
+      direction: "S",
+    },
+    {
+      id: generateBusId(),
+      route: 10,
+      status: "stopped",
+      frequency: getRandomFrequency(),
+      direction: "N",
+    },
+    {
+      id: generateBusId(),
+      route: 40,
+      status: "stopped",
+      frequency: getRandomFrequency(),
+      direction: "W",
+    },
+    {
+      id: generateBusId(),
+      route: 38,
+      status: "delayed",
+      frequency: getRandomFrequency(),
+      direction: "W",
+    },
+    {
+      id: generateBusId(),
+      route: 41,
+      status: "running",
+      frequency: getRandomFrequency(),
+      direction: "W",
+    },
+    {
+      id: generateBusId(),
+      route: 32,
+      status: "delayed",
+      frequency: getRandomFrequency(),
+      direction: "W",
+    },
+    {
+      id: generateBusId(),
+      route: 38,
+      status: "running",
+      frequency: getRandomFrequency(),
+      direction: "S",
+    },
+    {
+      id: generateBusId(),
+      route: 31,
+      status: "stopped",
+      frequency: getRandomFrequency(),
+      direction: "N",
+    },
+    {
+      id: generateBusId(),
+      route: 32,
+      status: "delayed",
+      frequency: getRandomFrequency(),
+      direction: "S",
+    },
+    {
+      id: generateBusId(),
+      route: 30,
+      status: "delayed",
+      frequency: getRandomFrequency(),
+      direction: "E",
+    },
+    {
+      id: generateBusId(),
+      route: 49,
+      status: "stopped",
+      frequency: getRandomFrequency(),
+      direction: "S",
+    },
+    {
+      id: generateBusId(),
+      route: 50,
+      status: "delayed",
+      frequency: getRandomFrequency(),
+      direction: "S",
+    },
+    {
+      id: generateBusId(),
+      route: 49,
+      status: "stopped",
+      frequency: getRandomFrequency(),
+      direction: "E",
+    },
+    {
+      id: generateBusId(),
+      route: 1,
+      status: "delayed",
+      frequency: getRandomFrequency(),
+      direction: "E",
+    },
+    {
+      id: generateBusId(),
+      route: 1,
+      status: "running",
+      frequency: getRandomFrequency(),
+      direction: "N",
+    },
+    {
+      id: generateBusId(),
+      route: 5,
+      status: "stopped",
+      frequency: getRandomFrequency(),
+      direction: "N",
+    },
+    {
+      id: generateBusId(),
+      route: 27,
+      status: "delayed",
+      frequency: getRandomFrequency(),
+      direction: "E",
+    },
+    {
+      id: generateBusId(),
+      route: 17,
+      status: "delayed",
+      frequency: getRandomFrequency(),
+      direction: "W",
+    },
+    {
+      id: generateBusId(),
+      route: 32,
+      status: "delayed",
+      frequency: getRandomFrequency(),
+      direction: "W",
+    },
+  ];
 };
 
-const busData = [
-  {
-    id: generateBusId(),
-    route: 43,
-    status: "delayed",
-    frequency: getRandomFrequency(),
-    direction: "N",
-  },
-  {
-    id: generateBusId(),
-    route: 22,
-    status: "running",
-    frequency: getRandomFrequency(),
-    direction: "W",
-  },
-  {
-    id: generateBusId(),
-    route: 13,
-    status: "delayed",
-    frequency: getRandomFrequency(),
-    direction: "N",
-  },
-  {
-    id: generateBusId(),
-    route: 3,
-    status: "running",
-    frequency: getRandomFrequency(),
-    direction: "N",
-  },
-  {
-    id: generateBusId(),
-    route: 3,
-    status: "delayed",
-    frequency: getRandomFrequency(),
-    direction: "N",
-  },
-  {
-    id: generateBusId(),
-    route: 39,
-    status: "delayed",
-    frequency: getRandomFrequency(),
-    direction: "S",
-  },
-  {
-    id: generateBusId(),
-    route: 10,
-    status: "delayed",
-    frequency: getRandomFrequency(),
-    direction: "S",
-  },
-  {
-    id: generateBusId(),
-    route: 10,
-    status: "stopped",
-    frequency: getRandomFrequency(),
-    direction: "N",
-  },
-  {
-    id: generateBusId(),
-    route: 40,
-    status: "stopped",
-    frequency: getRandomFrequency(),
-    direction: "W",
-  },
-  {
-    id: generateBusId(),
-    route: 38,
-    status: "delayed",
-    frequency: getRandomFrequency(),
-    direction: "W",
-  },
-  {
-    id: generateBusId(),
-    route: 41,
-    status: "running",
-    frequency: getRandomFrequency(),
-    direction: "W",
-  },
-  {
-    id: generateBusId(),
-    route: 32,
-    status: "delayed",
-    frequency: getRandomFrequency(),
-    direction: "W",
-  },
-  {
-    id: generateBusId(),
-    route: 38,
-    status: "running",
-    frequency: getRandomFrequency(),
-    direction: "S",
-  },
-  {
-    id: generateBusId(),
-    route: 31,
-    status: "stopped",
-    frequency: getRandomFrequency(),
-    direction: "N",
-  },
-  {
-    id: generateBusId(),
-    route: 32,
-    status: "delayed",
-    frequency: getRandomFrequency(),
-    direction: "S",
-  },
-  {
-    id: generateBusId(),
-    route: 30,
-    status: "delayed",
-    frequency: getRandomFrequency(),
-    direction: "E",
-  },
-  {
-    id: generateBusId(),
-    route: 49,
-    status: "stopped",
-    frequency: getRandomFrequency(),
-    direction: "S",
-  },
-  {
-    id: generateBusId(),
-    route: 50,
-    status: "delayed",
-    frequency: getRandomFrequency(),
-    direction: "S",
-  },
-  {
-    id: generateBusId(),
-    route: 49,
-    status: "stopped",
-    frequency: getRandomFrequency(),
-    direction: "E",
-  },
-  {
-    id: generateBusId(),
-    route: 1,
-    status: "delayed",
-    frequency: getRandomFrequency(),
-    direction: "E",
-  },
-  {
-    id: generateBusId(),
-    route: 1,
-    status: "running",
-    frequency: getRandomFrequency(),
-    direction: "N",
-  },
-  {
-    id: generateBusId(),
-    route: 5,
-    status: "stopped",
-    frequency: getRandomFrequency(),
-    direction: "N",
-  },
-  {
-    id: generateBusId(),
-    route: 27,
-    status: "delayed",
-    frequency: getRandomFrequency(),
-    direction: "E",
-  },
-  {
-    id: generateBusId(),
-    route: 17,
-    status: "delayed",
-    frequency: getRandomFrequency(),
-    direction: "W",
-  },
-  {
-    id: generateBusId(),
-    route: 32,
-    status: "delayed",
-    frequency: getRandomFrequency(),
-    direction: "W",
-  },
-];
-
-export default function RoutesTable({elements}) {
+export default function RoutesTable({ elements }) {
+  const [busData, setBusData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
+
+  // Generate dynamic data after component mounts to avoid SSR mismatch
+  useEffect(() => {
+    const initialBusData = generateInitialBusData();
+    setBusData(initialBusData);
+  }, []);
 
   const filteredBuses = busData.filter(
     (bus) =>
@@ -244,10 +253,11 @@ export default function RoutesTable({elements}) {
         return "text-gray-500";
     }
   };
+
   return (
-    <div className={`container p-2 bg-gray-600 max-h-full overflow-y-scroll`}>
+    <div className="container p-2 bg-gray-600 max-h-full overflow-y-scroll">
       <Card className="p-4 text-white bg-[#0b0b0b] border-[#4c4c4c] rounded-lg relative">
-        <CardHeader >
+        <CardHeader>
           <CardTitle className="text-2xl font-bold flex items-center">
             <Bus className="mr-2" /> Bus Information Dashboard
           </CardTitle>

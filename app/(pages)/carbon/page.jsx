@@ -45,12 +45,12 @@ export default function Component() {
   }
 
   return (
-    <div className="container mx-auto p-4 text-white bg-black rounded-lg">
+    <div className="container mx-auto p-4 text-white bg-[#171717] rounded-lg">
       <h1 className="text-3xl font-bold text-center mb-2 text-white">Bus Route Carbon Emission Tracker</h1>
       <p className="text-center mb-6 text-gray-600">{formatDateTime(currentDateTime)}</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {routeNumbers.map((routeNumber, index) => (
-          <Card key={routeNumber} className="border-[#4c4c4c] bg-gradient-to-br from-black to-slate-600 shadow-md hover:shadow-lg transition-shadow duration-300">
+          <Card key={routeNumber} className="border-[#4c4c4c] bg-gradient-to-br from-[#171717] to-slate-600 shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader className="space-y-1 pb-2">
               <CardTitle className="text-lg font-semibold text-center text-green-700">Route {routeNumber}</CardTitle>
             </CardHeader>

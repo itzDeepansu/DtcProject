@@ -45,7 +45,6 @@ export function BusPieChart() {
   const totalbuses = React.useMemo(() => {
     return chartData.reduce((acc, curr) => acc + curr.buses, 0)
   }, [])
-
   return (
     <Card className="flex flex-col bg-black text-white border-[#4c4c4c]">
       <CardHeader className="items-center pb-0">
@@ -82,9 +81,9 @@ export function BusPieChart() {
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-foreground text-3xl font-bold"
+                          className="fill-[#ffffff] text-3xl font-bold"
                         >
-                          {totalbuses.toLocaleString()}
+                          {totalbuses}
                         </tspan>
                         <tspan
                           x={viewBox.cx}

@@ -20,6 +20,7 @@ import {
   MapPinned,
   Flame,
   Route,
+  Bus,
 } from "lucide-react";
 import {
   Tooltip,
@@ -29,7 +30,7 @@ import {
 } from "@/components/ui/tooltip";
 const SideBar = () => {
   return (
-    <aside className="fixed inset-y-0 left-0 z-10 hidden w-16 flex-col border-r border-[#4c4c4c] bg-black sm:flex">
+    <aside className="fixed inset-y-0 left-0 z-10 hidden w-16 flex-col border-r border-[#4c4c4c] bg-[#171717] sm:flex">
         <nav className="flex flex-col items-center gap-4 px-2 py-4">
           <Link
             href="#"
@@ -75,7 +76,7 @@ const SideBar = () => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
-                  href="#"
+                  href="https://updated-scheduling-algooptima.streamlit.app/"
                   className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
                   <History className="h-5 w-5" />
@@ -116,6 +117,22 @@ const SideBar = () => {
               </TooltipTrigger>
               <TooltipContent side="right" className="text-[2rem] bg-black">
                 Carbon Footprint
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Link
+                  href="https://ai-powered-vehicle-predictive-maintainance-algooptima.streamlit.app/"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                >
+                  <Bus className="h-5 w-5" />
+                  <span className="sr-only">Maintenance</span>
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent side="right" className="text-[2rem] bg-black">
+                Maintenance
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>

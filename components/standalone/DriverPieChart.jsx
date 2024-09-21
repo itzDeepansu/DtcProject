@@ -82,7 +82,7 @@ export function DriverPieChart() {
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-background text-3xl font-bold"
+                          className="fill-[#ffffff] text-3xl font-bold"
                         >
                           {totaldrivers.toLocaleString()}
                         </tspan>

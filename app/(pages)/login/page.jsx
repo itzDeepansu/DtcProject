@@ -57,7 +57,7 @@ const Login = () => {
                 type="text"
                 placeholder="test@gmail.com"
                 required
-                className="placeholder:text-[#817e7e] rounded-lg"
+                className="placeholder:text-[#817e7e] rounded-[3px]"
                 {...register("email")}
               />
             </div>
@@ -75,7 +75,7 @@ const Login = () => {
                 id="password"
                 type="password"
                 required
-                className="rounded-lg"
+                className="rounded-[3px]"
                 {...register("password")}
               />
             </div>
