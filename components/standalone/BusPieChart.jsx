@@ -103,7 +103,7 @@ export function BusPieChart() {
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
         <div className="flex items-center gap-2 font-medium leading-none">
-        Showing Buses' Status for 19/09/2024
+        Showing Buses&apos; Status for 19/09/2024
         </div>
       </CardFooter>
     </Card>
