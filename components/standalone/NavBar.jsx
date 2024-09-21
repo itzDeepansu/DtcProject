@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,8 +28,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { UserRound } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { signOut } from "next-auth/react";
 
 const NavBar = () => {
   return (
@@ -128,13 +131,14 @@ const NavBar = () => {
               size="icon"
               className="overflow-hidden rounded-full"
             >
-              <Image
+              {/* <Image
                 src="/placeholder-user.jpg"
                 width={36}
                 height={36}
                 alt="Avatar"
                 className="overflow-hidden rounded-full"
-              />
+              /> */}
+              <UserRound className="h-5 w-5" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -143,7 +147,7 @@ const NavBar = () => {
             <DropdownMenuItem>Settings</DropdownMenuItem>
             <DropdownMenuItem>Support</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Logout</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => signOut({ callbackUrl: "/login" })}>Logout</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </header>

@@ -19,7 +19,8 @@ export const metadata = {
 import SideBar from "@/components/standalone/SideBar";
 import NavBar from "@/components/standalone/NavBar";
 
-export default function RootLayout({ children }) {
+
+export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body

@@ -19,7 +19,7 @@ import {
   History,
   MapPinned,
   Flame,
-  Route
+  Route,
 } from "lucide-react";
 import {
   Tooltip,
