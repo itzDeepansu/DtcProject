@@ -255,8 +255,8 @@ export default function RoutesTable({ elements }) {
   };
 
   return (
-    <div className="container p-2 bg-gray-600 max-h-full overflow-y-scroll">
-      <Card className="p-4 text-white bg-[#0b0b0b] border-[#4c4c4c] rounded-lg relative">
+    <div className="container p-2 max-h-full overflow-y-scroll bg-white">
+      <Card className="p-4 text-black rounded-lg relative !shadow-none border-none">
         <CardHeader>
           <CardTitle className="text-2xl font-bold flex items-center">
             <Bus className="mr-2" /> Bus Information Dashboard

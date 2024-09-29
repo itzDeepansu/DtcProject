@@ -26,10 +26,10 @@ export default async function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="flex min-h-screen w-full flex-col bg-muted/40 bg-black text-white">
+        <div className="flex min-h-screen w-full flex-col bg-white text-black">
           <NavBar />
           <SideBar />
-          <div className="ml-16 w-[calc(100%-4rem)] bg-gray-600 p-2">{children}</div>
+          <div className="ml-16 w-[calc(100%-4rem)] bg-white p-2">{children}</div>
         </div>
       </body>
     </html>

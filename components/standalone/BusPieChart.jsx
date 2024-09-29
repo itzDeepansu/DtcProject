@@ -46,7 +46,7 @@ export function BusPieChart() {
     return chartData.reduce((acc, curr) => acc + curr.buses, 0)
   }, [])
   return (
-    <Card className="flex flex-col bg-black text-white border-[#4c4c4c]">
+    <Card className="flex flex-col bg-white text-black border-none !shadow-none">
       <CardHeader className="items-center pb-0">
         <CardTitle>Buses</CardTitle>
         <CardDescription>19/09/2024</CardDescription>
@@ -81,7 +81,7 @@ export function BusPieChart() {
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-[#ffffff] text-3xl font-bold"
+                          className="fill-[#000000] text-3xl font-bold"
                         >
                           {totalbuses}
                         </tspan>

@@ -35,7 +35,7 @@ import { signOut } from "next-auth/react";
 
 const NavBar = () => {
   return (
-    <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14 bg-[#181818]">
+    <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14 bg-white ">
       <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b border-[#4c4c4c] bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
         <Sheet>
           <SheetTrigger asChild>

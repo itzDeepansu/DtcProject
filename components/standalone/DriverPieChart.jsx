@@ -47,7 +47,7 @@ export function DriverPieChart() {
   }, [])
 
   return (
-    <Card className="flex flex-col bg-black text-white border-[#4c4c4c]">
+    <Card className="flex flex-col bg-white !shadow-none border-none">
       <CardHeader className="items-center pb-0">
         <CardTitle>Drivers</CardTitle>
         <CardDescription>19/09/2024</CardDescription>
@@ -82,7 +82,7 @@ export function DriverPieChart() {
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-[#ffffff] text-3xl font-bold"
+                          className="fill-[#000000] text-3xl font-bold"
                         >
                           {totaldrivers.toLocaleString()}
                         </tspan>
