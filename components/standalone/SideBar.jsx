@@ -62,22 +62,22 @@ const SideBar = () => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
-                  href="#"
-                  className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8"
+                  href="https://crewwww-abxytwumtpr9dmpgge8ofn.streamlit.app/"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
                   <Route className="h-5 w-5" />
-                  <span className="sr-only">Routing</span>
+                  <span className="sr-only">Crew Management</span>
                 </Link>
               </TooltipTrigger>
               <TooltipContent side="right" className="text-[2rem] bg-black">
-                Routing
+                Crew Management
               </TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
-                  href="https://updated-scheduling-algooptima.streamlit.app/"
-                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                  href="https://dynamic-scheduling-algo-optima.streamlit.app/"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
                   <History className="h-5 w-5" />
                   <span className="sr-only">Scheduling</span>
