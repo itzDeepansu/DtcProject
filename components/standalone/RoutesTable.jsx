@@ -4,7 +4,7 @@ import { Bus, Navigation, AlertTriangle, Square } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { nanoid } from "nanoid";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
   TableBody,
